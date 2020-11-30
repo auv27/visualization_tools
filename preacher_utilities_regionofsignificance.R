@@ -1,7 +1,7 @@
 library(tidyverse)
 library(viridis)
 
-# Code to create a nice figure using the output from preacher interaction utilities
+# Code to create a nice figure using the output from preacher interaction utilities (http://quantpsy.org/interact/mlr2.htm)
 # This will create a regions of significance figure for a 2-way interaction
 
 # These equations are example data pulled from preacher utility output
