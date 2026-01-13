@@ -25,7 +25,7 @@ df <- df %>%
   mutate(linecolor = ifelse(fz <= -335.48 | fz >= 12.67, "sig", "insig"))
 
 # Create figure
-ggplot(df, aes(fz, fy, color = linecolor)) +
+ggplot(df, aes(fz, fy, color = linecolor, group = 1)) +
   geom_line(alpha=.5) +
   # Nice package for colorblind friendly visualizations
   scale_color_viridis_d(begin = .3, end = .7) +
@@ -37,9 +37,8 @@ ggplot(df, aes(fz, fy, color = linecolor)) +
   geom_vline(xintercept = -335.4841, linetype = "dashed") +
   geom_vline(xintercept = 12.67, linetype = "dashed") +
   geom_hline(yintercept = 0) +
-  # Create a line segment visualizing observed data range
-  geom_segment(aes(x = min(-351.555290),xend = max(413.370407),y = 0,yend = 0),
-               colour = "black", size = 2) +
+  # Use annotate() for the line segment
+  annotate("segment", x = -351.555290, xend = 413.370407, y = 0, yend = 0, color = "black", size = 2)
   # Annotate boundary lines
   annotate("text", x = -270, y = 5.5,
            label = "paste(x, \" = -335.48 \")", parse = TRUE) +
